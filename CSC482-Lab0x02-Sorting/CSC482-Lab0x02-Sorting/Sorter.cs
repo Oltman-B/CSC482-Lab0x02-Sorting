@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CSC482_Lab0x02_Sorting
 {
-    abstract class Sorter : IComparer<Key>
+    abstract class Sorter
     {
-        public int Compare(Key x, Key y)
+        private int Compare(Key x, Key y)
         {
             if (x == null && y == null) return 0;
             else if (x == null) return -1;
