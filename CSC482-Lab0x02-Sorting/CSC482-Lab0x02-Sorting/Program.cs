@@ -11,7 +11,7 @@ namespace CSC482_Lab0x02_Sorting
 
             if (a < b)
             {
-                Console.WriteLine();
+                Console.WriteLine($"a-width={a.KeyWidth} < b-width={b.KeyWidth}");
             }
 
         }

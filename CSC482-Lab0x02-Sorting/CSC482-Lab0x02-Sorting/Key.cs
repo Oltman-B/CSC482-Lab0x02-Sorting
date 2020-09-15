@@ -18,9 +18,9 @@ namespace CSC482_Lab0x02_Sorting
         {
             // If this key is longer than other key, and other key is valid (doesn't start with 0)
             // then this is the larger value, return positive 1.
-            if (KeyWidth > other.KeyWidth && _key[0] != 0) return 1;
+            if (KeyWidth > other.KeyWidth) return 1;
             // Else if this is shorter, it is less, so return -1
-            if (KeyWidth < other.KeyWidth && other._key[0] != 0) return -1;
+            if (KeyWidth < other.KeyWidth) return -1;
 
             // Keys are the same length, check each byte for first mismatch. If this._keys[i] > other._keys[i] return 1
             // If equal, continue, if less, return -1
