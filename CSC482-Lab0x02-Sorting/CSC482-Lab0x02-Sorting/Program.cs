@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSC482_Lab0x02_Sorting
 {
@@ -6,7 +7,7 @@ namespace CSC482_Lab0x02_Sorting
     {
         static void Main(string[] args)
         {
-            var testData = new TestData(3, 4);
+            
         }
     }
 }

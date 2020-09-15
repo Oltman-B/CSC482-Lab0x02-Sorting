@@ -22,7 +22,7 @@ namespace CSC482_Lab0x02_Sorting
             // Else if this is shorter, it is less, so return -1
             if (KeyWidth < other.KeyWidth && other._key[0] != 0) return -1;
 
-            // Keys are the same length, check each byte for first if thie._keys[i] > other._keys[i] return 1
+            // Keys are the same length, check each byte for first mismatch. If this._keys[i] > other._keys[i] return 1
             // If equal, continue, if less, return -1
             for (int i = 0; i < _key.Length; i++)
             {
