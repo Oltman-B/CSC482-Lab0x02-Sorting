@@ -16,6 +16,7 @@ namespace CSC482_Lab0x02_Sorting
         }
         public int CompareTo(Key other)
         {
+            if (other == null || other._key == null) return 1;
             // If this key is longer than other key, and other key is valid (doesn't start with 0)
             // then this is the larger value, return positive 1.
             if (KeyWidth > other.KeyWidth) return 1;
@@ -34,6 +35,8 @@ namespace CSC482_Lab0x02_Sorting
             return 0;
         }
 
+        #region Key Comparison Operator Overloads
+
         public static bool operator <(Key a, Key b)
         {
             return a.CompareTo(b) == -1;
@@ -50,5 +53,15 @@ namespace CSC482_Lab0x02_Sorting
         {
             return a.CompareTo(b) != 0;
         }
+        public static bool operator <=(Key a, Key b)
+        {
+            return a.CompareTo(b) <= 0;
+        }
+        public static bool operator >=(Key a, Key b)
+        {
+            return a.CompareTo(b) >= 0;
+        }
+
+        #endregion
     }
 }
