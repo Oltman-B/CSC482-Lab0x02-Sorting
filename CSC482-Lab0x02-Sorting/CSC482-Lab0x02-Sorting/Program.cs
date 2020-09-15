@@ -6,7 +6,14 @@ namespace CSC482_Lab0x02_Sorting
     {
         static void Main(string[] args)
         {
-            
+            Key a = new Key(2);
+            Key b = new Key(4);
+
+            if (a < b)
+            {
+                Console.WriteLine();
+            }
+
         }
     }
 }

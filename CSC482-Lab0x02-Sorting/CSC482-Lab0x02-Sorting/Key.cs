@@ -33,5 +33,22 @@ namespace CSC482_Lab0x02_Sorting
             // keys are equal.
             return 0;
         }
+
+        public static bool operator <(Key a, Key b)
+        {
+            return a.CompareTo(b) == -1;
+        }
+        public static bool operator >(Key a, Key b)
+        {
+            return a.CompareTo(b) == 1;
+        }
+        public static bool operator ==(Key a, Key b)
+        {
+            return a.CompareTo(b) == 0;
+        }
+        public static bool operator !=(Key a, Key b)
+        {
+            return a.CompareTo(b) != 0;
+        }
     }
 }
