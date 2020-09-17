@@ -17,23 +17,20 @@ namespace CSC482_Lab0x02_Sorting
         }
         public int CompareTo(Key other)
         {
-            if (other == null || other._key == null) return 1;
-            // If this key is longer than other key, and other key is valid (doesn't start with 0)
-            // then this is the larger value, return positive 1.
-            if (KeyWidth > other.KeyWidth) return 1;
-            // Else if this is shorter, it is less, so return -1
-            if (KeyWidth < other.KeyWidth) return -1;
-
-            // Keys are the same length, check each byte for first mismatch. If this._keys[i] > other._keys[i] return 1
-            // If equal, continue, if less, return -1
-            for (int i = 0; i < _key.Length; i++)
+            //Check prefix of keys (should alwasy be same width, but this will handle
+            // keys of different widths.)
+            for (int i = 0; i < _key.Length && i < other._key.Length; i++)
             {
                 if (_key[i] > other._key[i]) return 1;
                 if (_key[i] < other._key[i]) return -1;
             }
 
-            // keys are equal.
-            return 0;
+            // When we get here, we know that shorter key matches longer key's prefix
+            // if this is longer key, it comes after, if this is shorter, it comes before
+            // else they are equal keys.
+            if (_key.Length > other._key.Length) return -1;
+            else if (_key.Length < other._key.Length) return 1;
+            else return 0; // Keys are equal
         }
 
         public void FillKeyRandomBytes()
@@ -47,7 +44,7 @@ namespace CSC482_Lab0x02_Sorting
             var sb = new StringBuilder();
             foreach (var b in _key)
             {
-                sb.Append(b);
+                sb.Append(b + ", ");
             }
 
             return sb.ToString();
