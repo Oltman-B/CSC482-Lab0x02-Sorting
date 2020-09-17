@@ -6,9 +6,10 @@ namespace CSC482_Lab0x02_Sorting
 {
     class Key : IComparable<Key>
     {
+        private Random rand = new Random();
+
         private byte[] _key;
         public int KeyWidth { get; }
-
         public Key(int width)
         {
             _key = new byte[width];
@@ -35,8 +36,25 @@ namespace CSC482_Lab0x02_Sorting
             return 0;
         }
 
-        #region Key Comparison Operator Overloads
+        public void FillKeyRandomBytes()
+        {
+            //ToDo add extra byte for zero index when printing if necessary
+            rand.NextBytes(_key);
+        }
 
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach (var b in _key)
+            {
+                sb.Append(b);
+            }
+
+            return sb.ToString();
+            //return System.Text.Encoding.Default.GetString(_key); // This will return the bytes as text based on default encoding.
+        }
+
+        #region Key Comparison Operator Overloads
         public static bool operator <(Key a, Key b)
         {
             return a.CompareTo(b) == -1;
