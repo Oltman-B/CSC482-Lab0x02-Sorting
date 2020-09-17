@@ -6,15 +6,13 @@ namespace CSC482_Lab0x02_Sorting
     {
         static void Main(string[] args)
         {
-            TestData test = new TestData(2, 1000);
+            TestData test = new TestData(5, 10);
 
-            foreach (var testKey in test.Keys)
-            {
-                Console.WriteLine(testKey.ToString());
-            }
+            Console.WriteLine(test.IsSorted());
 
             test.Keys.Sort();
 
+            Console.WriteLine(test.IsSorted());
             foreach (var testKey in test.Keys)
             {
                 Console.WriteLine(testKey.ToString());

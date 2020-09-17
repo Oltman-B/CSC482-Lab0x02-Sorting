@@ -28,6 +28,18 @@ namespace CSC482_Lab0x02_Sorting
             }
         }
 
+        public bool IsSorted()
+        {
+            // If at any point a preceeding key is greater than a following key
+            // the list is NOT sorted (only care about ascending order now.)
+            for (int i = 0; i < Keys.Count - 1; i++)
+            {
+                if (Keys[i] > Keys[i + 1]) return false;
+            }
+
+            return true;
+        }
+
         
     }
 
