@@ -10,9 +10,9 @@ namespace CSC482_Lab0x02_Sorting
 #pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
 #pragma warning restore CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
     {
-        private Random rand = new Random();
+        private readonly Random _rand = new Random();
 
-        private byte[] _key;
+        private readonly byte[] _key;
         public int KeyWidth { get; }
         public Key(int width)
         {
@@ -40,7 +40,7 @@ namespace CSC482_Lab0x02_Sorting
         public void FillKeyRandomBytes()
         {
             //ToDo add extra byte for zero index when printing if necessary
-            rand.NextBytes(_key);
+            _rand.NextBytes(_key);
         }
 
         public override string ToString()
@@ -66,11 +66,11 @@ namespace CSC482_Lab0x02_Sorting
         }
         public static bool operator ==(Key a, Key b)
         {
-            return a.CompareTo(b) == 0;
+            return a?.CompareTo(b) == 0;
         }
         public static bool operator !=(Key a, Key b)
         {
-            return a.CompareTo(b) != 0;
+            return a?.CompareTo(b) != 0;
         }
         public static bool operator <=(Key a, Key b)
         {
