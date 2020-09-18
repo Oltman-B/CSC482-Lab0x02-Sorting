@@ -7,6 +7,7 @@ namespace CSC482_Lab0x02_Sorting.Sorts
 {
     class Selection : iSorter<Key>
     {
+        // t(N) ~ a*N^2  O(N^2)
         public void Sort(List<Key> keys)
         {
             // iterate through list
