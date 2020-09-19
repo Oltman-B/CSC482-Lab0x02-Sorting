@@ -11,6 +11,7 @@ namespace CSC482_Lab0x02_Sorting
             var sandbox = new SortSandbox();
 
             sandbox.VerificationTests();
+            sandbox.RunTimeTests();
         }
     }
 }
