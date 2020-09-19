@@ -7,7 +7,7 @@ namespace CSC482_Lab0x02_Sorting.Sorts
     // Decided to limit possible radix values to these enums.
     // anything over Base16777216 will overflow an integer and can't be used
     // to lookup in an array, so a different implementation would be required to expand
-    // into the range of x64
+    // into the range of x64 likely replace count array with count dictionary.
     internal enum RadixSortBase
     {
         Base256 = 1,
@@ -40,12 +40,12 @@ namespace CSC482_Lab0x02_Sorting.Sorts
             var input = new List<Key>(keys);
 
             // calculate the maximum value needed for lookup into count array
-            var radixMax = CalculateRadixMax();
+            var maxLookUpIndex = CalculateRadixMax();
 
             for (var curSegment = _segmentCount - 1; curSegment >= 0; curSegment--)
             {
                 // Count number of occurrences of each segment ('digit')
-                var counts = new int[radixMax];
+                var counts = new int[maxLookUpIndex];
                 foreach (var key in keys)
                     // get current digit from dictionary and use it as an index
                     // into the count array
@@ -84,6 +84,7 @@ namespace CSC482_Lab0x02_Sorting.Sorts
             _segmentCount = key.KeyWidth / _segmentByteSize;
             var result = new int[_segmentCount];
 
+            // iterate through source bytes in key and increment by segmentByteSize
             for (int i = 0, k = 0; i < key.KeyWidth - 1; i += _segmentByteSize)
             {
                 // Build final value from each byte in keys
@@ -91,10 +92,13 @@ namespace CSC482_Lab0x02_Sorting.Sorts
                 var tempResult = 0;
                 for (var j = 0; j < _segmentByteSize; j++)
                 {
+                    //firstbyte * 2^exponent + secondbyte * 2^(exponent-8)...
                     tempResult += keyBytes[i + j] * (int) Math.Pow(2, exponent);
                     exponent -= 8;
                 }
 
+                // Map into shorter result array, which is long enough to hold final
+                // segment count.
                 result[k++] = tempResult;
             }
 

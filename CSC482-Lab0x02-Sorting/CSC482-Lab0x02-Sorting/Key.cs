@@ -39,11 +39,25 @@ namespace CSC482_Lab0x02_Sorting
 
         public void FillKeyRandomBytes()
         {
-            //ToDo add extra byte for zero index when printing if necessary
             _rand.NextBytes(_key);
         }
 
+        public void FillKeyRandomBytes(char min, char max)
+        {
+            // used to fill key with specified range of characters.
+            for (int i = 0; i < KeyWidth; i++)
+            {
+                _key[i] = (byte)_rand.Next(min, max);
+            }
+        }
+
         public override string ToString()
+        {
+            // This will return the bytes as text based on default encoding.
+            return System.Text.Encoding.Default.GetString(_key); 
+        }
+
+        public string ToStringLiteral()
         {
             var sb = new StringBuilder();
             foreach (var b in _key)
@@ -52,7 +66,6 @@ namespace CSC482_Lab0x02_Sorting
             }
 
             return sb.ToString();
-            //return System.Text.Encoding.Default.GetString(_key); // This will return the bytes as text based on default encoding.
         }
 
         public byte[] ToBytes()

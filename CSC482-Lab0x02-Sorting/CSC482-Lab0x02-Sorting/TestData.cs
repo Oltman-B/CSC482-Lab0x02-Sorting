@@ -18,6 +18,13 @@ namespace CSC482_Lab0x02_Sorting
             FillKeyList();
         }
 
+        public TestData(int keyByteWidth, int elementCount, char minVal, char maxVal)
+        {
+            KeyByteWidth = keyByteWidth;
+            Count = elementCount;
+            FillKeyList(minVal, maxVal);
+        }
+
         public bool IsSorted()
         {
             // If at any point a preceding key is greater than a following key
@@ -36,6 +43,16 @@ namespace CSC482_Lab0x02_Sorting
             {
                 Key newKey = new Key(KeyByteWidth);
                 newKey.FillKeyRandomBytes();
+                Keys.Add(newKey);
+            }
+        }
+
+        private void FillKeyList(char min, char max)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                Key newKey = new Key(KeyByteWidth);
+                newKey.FillKeyRandomBytes(min, max);
                 Keys.Add(newKey);
             }
         }
