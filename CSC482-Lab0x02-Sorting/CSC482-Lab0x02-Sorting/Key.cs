@@ -55,6 +55,11 @@ namespace CSC482_Lab0x02_Sorting
             //return System.Text.Encoding.Default.GetString(_key); // This will return the bytes as text based on default encoding.
         }
 
+        public byte[] ToBytes()
+        {
+            return _key;
+        }
+
         #region Key Comparison Operator Overloads
         public static bool operator <(Key a, Key b)
         {

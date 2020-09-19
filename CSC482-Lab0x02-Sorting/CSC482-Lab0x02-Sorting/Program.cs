@@ -8,13 +8,14 @@ namespace CSC482_Lab0x02_Sorting
     {
         static void Main(string[] args)
         {
-
-            var sorters = new List<iSorter<Key>>{new Quick(), new Merge(), new Selection()};
+            var sorters = new List<iSorter<Key>> { new Quick(), new Merge(), new Selection(), new Radix(RadixSortBase.Base256) };
 
             foreach (var sorter in sorters)
             {
-                Console.WriteLine($"Testing sorter {sorter.GetType()}");
+                
                 TestData test = new TestData(3, 10);
+
+                Console.WriteLine($"Testing sorter {sorter.GetType()}");
                 Console.WriteLine("Sorted? " + test.IsSorted());
                 foreach (var testKey in test.Keys)
                 {
